@@ -33,7 +33,6 @@ class MultiSearchSelect extends React.Component {
   };
 
   hide = e => {
-    console.log(this.wrapperRef, e.target);
     if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
       this.setState({
         showOptions: false
@@ -93,7 +92,6 @@ class MultiSearchSelect extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div ref={this.setWrapperRef} className={this.props.className} style={{width :this.props.width}}>
         <div>

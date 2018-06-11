@@ -176,7 +176,7 @@ MultiSearchSelect.propTypes = {
     showTags: PropTypes.bool,
     multiSelect: PropTypes.bool,
     onSelect: PropTypes.func.isRequired,
-    onUserInput: PropTypes.func
+    onUserInput: PropTypes.func  /* Function to get values typed by user in Search box */
 };
 
 MultiSearchSelect.defaultProps = {

@@ -94,11 +94,15 @@ class MultiSearchSelect extends React.Component {
     });
   };
 
+  none = () => {
+    return
+  }
+  
   render() {
     return (
       <div ref={this.setWrapperRef} className={this.props.className} style={{width :this.props.width}}>
         <div>
-          <div className="input-area" contentEditable={false} onFocus={this.props.searchable ? this.show : "" } onClick={this.props.searchable ? "" : this.show} style={{background: this.props.primaryColor, color: this.props.textColor}}>
+          <div className="input-area" contentEditable={false} onFocus={this.props.searchable ? this.show : this.none } onClick={this.props.searchable ? this.none : this.show} style={{background: this.props.primaryColor, color: this.props.textColor}}>
             {this.props.showTags && <div contentEditable={false} style={{ display: "inline" }}>
               {this.state.selected.map((e, i) => {
                 return (

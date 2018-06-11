@@ -24,6 +24,9 @@ class MultiSearchSelect extends React.Component {
     if(this.props.onSelect){
       this.props.onSelect(this.state.selected);
     }
+    if(this.props.onUserInput){
+      this.props.onUserInput(this.state.userInput);
+    }
   }
   show = e => {
     e.preventDefault();
@@ -173,7 +176,7 @@ MultiSearchSelect.propTypes = {
     showTags: PropTypes.bool,
     multiSelect: PropTypes.bool,
     onSelect: PropTypes.func.isRequired,
-    
+    onUserInput: PropTypes.func
 };
 
 MultiSearchSelect.defaultProps = {

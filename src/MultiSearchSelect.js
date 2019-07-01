@@ -170,7 +170,7 @@ MultiSearchSelect.propTypes = {
   options: PropTypes.array.isRequired,
   optionsContainerHeight: PropTypes.string,
   searchPlaceholder: PropTypes.string,
-  selected: PropTypes.array,
+  selected: PropTypes.array, /* Tags that phave to be selected on first render */
   width: PropTypes.string,
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,

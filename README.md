@@ -58,6 +58,7 @@ export default App;
     options: PropTypes.array.isRequired,
     optionsContainerHeight: PropTypes.string,
     searchPlaceholder: PropTypes.string,
+    selected: PropTypes.array, /* Tags that phave to be selected on first render */
     width: PropTypes.string,
     primaryColor: PropTypes.string,
     secondaryColor: PropTypes.string,
@@ -68,7 +69,7 @@ export default App;
     showTags: PropTypes.bool,
     multiSelect: PropTypes.bool,
     onSelect: PropTypes.func.isRequired,
-    onUserInput: PropTypes.func, /* Function to get values typed by user in Search box */
+    onUserInput: PropTypes.func  /* Function to get values typed by user in Search box */
 }
 ```
 
@@ -78,6 +79,7 @@ export default App;
 {
     optionsContainerHeight: "50vh",
     searchPlaceholder: "Search...",
+    selected: [],
     className: "",
     width: "200px",
     primaryColor: "#e1e1e1",

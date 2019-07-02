@@ -8,7 +8,7 @@ class MultiSearchSelect extends React.Component {
     super(props);
     this.state = {
       showOptions: false,
-      selected: [],
+      selected: this.props.selected,
       userInput: ""
     };
   }
@@ -20,11 +20,11 @@ class MultiSearchSelect extends React.Component {
     document.removeEventListener("mousedown", this.hide);
   }
 
-  componentDidUpdate(){
-    if(this.props.onSelect){
+  componentDidUpdate() {
+    if (this.props.onSelect) {
       this.props.onSelect(this.state.selected);
     }
-    if(this.props.onUserInput){
+    if (this.props.onUserInput) {
       this.props.onUserInput(this.state.userInput);
     }
   }
@@ -97,16 +97,16 @@ class MultiSearchSelect extends React.Component {
   none = () => {
     return
   }
-  
+
   render() {
     return (
-      <div ref={this.setWrapperRef} className={this.props.className} style={{width :this.props.width}}>
+      <div ref={this.setWrapperRef} className={this.props.className} style={{ width: this.props.width }}>
         <div>
-          <div className="input-area" contentEditable={false} onFocus={this.props.searchable ? this.show : this.none } onClick={this.props.searchable ? this.none : this.show} style={{background: this.props.primaryColor, color: this.props.textColor}}>
+          <div className="input-area" contentEditable={false} onFocus={this.props.searchable ? this.show : this.none} onClick={this.props.searchable ? this.none : this.show} style={{ background: this.props.primaryColor, color: this.props.textColor }}>
             {this.props.showTags && <div contentEditable={false} style={{ display: "inline" }}>
               {this.state.selected.map((e, i) => {
                 return (
-                  <div className="tags" key={i} style={{background: this.props.secondaryColor, color: this.props.textSecondaryColor}}>
+                  <div className="tags" key={i} style={{ background: this.props.secondaryColor, color: this.props.textSecondaryColor }}>
                     {e}
                     <span
                       onClick={e => {
@@ -126,14 +126,14 @@ class MultiSearchSelect extends React.Component {
               onChange={this.handleChange}
               placeholder={this.props.searchPlaceholder}
               className="input-box"
-              style={{background: this.props.primaryColor, color: this.props.textColor}}
+              style={{ background: this.props.primaryColor, color: this.props.textColor }}
             />}
           </div>
           {this.state.showOptions && this.props.options && (
-            <div className="option-area" style={{background: this.props.primaryColor, color: this.props.textColor, maxHeight: this.props.optionsContainerHeight}}>
-            {this.props.multiSelect && <div style={{display: 'flex', justifyContent: 'space-around'}}><button className="btn" onClick={this.selectAll} style={{background: this.props.secondaryColor, color: this.props.textSecondaryColor}}>Select All</button><button className="btn" onClick={this.unselectAll} style={{background: this.props.secondaryColor, color: this.props.textSecondaryColor}}>Unselect All</button></div>}
+            <div className="option-area" style={{ background: this.props.primaryColor, color: this.props.textColor, maxHeight: this.props.optionsContainerHeight }}>
+              {this.props.multiSelect && <div style={{ display: 'flex', justifyContent: 'space-around' }}><button className="btn" onClick={this.selectAll} style={{ background: this.props.secondaryColor, color: this.props.textSecondaryColor }}>Select All</button><button className="btn" onClick={this.unselectAll} style={{ background: this.props.secondaryColor, color: this.props.textSecondaryColor }}>Unselect All</button></div>}
 
-              { this.props.options.map((e, i) => {
+              {this.props.options.map((e, i) => {
                 if (
                   e.toLowerCase().indexOf(this.state.userInput.toLowerCase()) >
                   -1
@@ -166,35 +166,37 @@ class MultiSearchSelect extends React.Component {
 }
 
 MultiSearchSelect.propTypes = {
-    
-    options: PropTypes.array.isRequired,
-    optionsContainerHeight: PropTypes.string,
-    searchPlaceholder: PropTypes.string,
-    width: PropTypes.string,
-    primaryColor: PropTypes.string,
-    secondaryColor: PropTypes.string,
-    textColor: PropTypes.string,
-    textSecondaryColor: PropTypes.string,
-    className: PropTypes.string,
-    searchable: PropTypes.bool,
-    showTags: PropTypes.bool,
-    multiSelect: PropTypes.bool,
-    onSelect: PropTypes.func.isRequired,
-    onUserInput: PropTypes.func  /* Function to get values typed by user in Search box */
+
+  options: PropTypes.array.isRequired,
+  optionsContainerHeight: PropTypes.string,
+  searchPlaceholder: PropTypes.string,
+  selected: PropTypes.array, /* Tags that phave to be selected on first render */
+  width: PropTypes.string,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+  textColor: PropTypes.string,
+  textSecondaryColor: PropTypes.string,
+  className: PropTypes.string,
+  searchable: PropTypes.bool,
+  showTags: PropTypes.bool,
+  multiSelect: PropTypes.bool,
+  onSelect: PropTypes.func.isRequired,
+  onUserInput: PropTypes.func  /* Function to get values typed by user in Search box */
 };
 
 MultiSearchSelect.defaultProps = {
-    optionsContainerHeight: "50vh",
-    searchPlaceholder: "Search...",
-    className: "",
-    width: "200px",
-    primaryColor: "#e1e1e1",
-    secondaryColor: "#046fc0",
-    textColor: "#000",
-    textSecondaryColor: "#fff",
-    searchable: true,
-    showTags: true,
-    multiSelect: true
+  optionsContainerHeight: "50vh",
+  searchPlaceholder: "Search...",
+  selected: [],
+  className: "",
+  width: "200px",
+  primaryColor: "#e1e1e1",
+  secondaryColor: "#046fc0",
+  textColor: "#000",
+  textSecondaryColor: "#fff",
+  searchable: true,
+  showTags: true,
+  multiSelect: true
 }
 
 export default MultiSearchSelect;

@@ -19,6 +19,12 @@ $ npm i react-search-multi-select
 
 [Online Demo Link](https://vilvaathibanpb.github.io/react-search-multi-select-demo/)
 
+
+### codesandbox Demo
+
+[Online Demo Link](https://codesandbox.io/s/react-search-multi-select-1wspz)
+
+
 ### How to Use
 
 Install and import react-search-multi-select and pass the props

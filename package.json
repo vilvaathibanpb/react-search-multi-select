@@ -18,7 +18,8 @@
     "customizable select"
   ],
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "prettier": "prettier --write src/"
   },
   "peerDependencies": {
     "prop-types": "^15.6.0",
@@ -32,12 +33,27 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.11",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "path": "^0.12.7",
+    "prettier": "^2.0.5",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   }
 }

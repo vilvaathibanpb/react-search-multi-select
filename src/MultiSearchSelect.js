@@ -19,11 +19,11 @@ class MultiSearchSelect extends React.Component {
 		document.removeEventListener('mousedown', this.hide);
 	}
 
-	componentDidUpdate() {
-		if (this.props.onSelect) {
+	componentDidUpdate(_prevProps, prevState) {
+		if (this.props.onSelect && JSON.stringify(prevState.selected) !== JSON.stringify(this.state.selected)) {
 			this.props.onSelect(this.state.selected);
 		}
-		if (this.props.onUserInput) {
+		if (this.props.onUserInput && prevState.userInput !== this.state.userInput) {
 			this.props.onUserInput(this.state.userInput);
 		}
 	}
@@ -48,7 +48,7 @@ class MultiSearchSelect extends React.Component {
 		});
 	};
 	addTag = element => {
-		let current = this.state.selected;
+		let current = this.state.selected.slice();
 		if (this.state.selected.indexOf(element) === -1) {
 			current.push(element);
 			let single = [];
@@ -68,7 +68,7 @@ class MultiSearchSelect extends React.Component {
 	};
 
 	removeTag = i => {
-		let current = this.state.selected;
+		let current = this.state.selected.slice();
 		current.splice(i, 1);
 		this.setState({
 			...this.state,
